@@ -680,3 +680,12 @@ func IncrQueueDatabaseContextTimeoutCounter(ctx context.Context, opts CounterOpt
 		Tags:        opts.Tags,
 	})
 }
+
+func IncrPausesLegacyDeletionCounter(ctx context.Context, opts CounterOpt) {
+	RecordCounterMetric(ctx, 1, CounterOpt{
+		PkgName:     opts.PkgName,
+		MetricName:  "pauses_legacy_deletion_total",
+		Description: "Total number of legacy pause deletions without timestamps",
+		Tags:        opts.Tags,
+	})
+}
